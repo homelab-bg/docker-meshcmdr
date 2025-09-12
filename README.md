@@ -36,6 +36,20 @@ docker compose -f docker-compose.yml -f docker-compose.traefik.yml up -d
 ```
 Access at: https://mc.yourdomain.com (with automatic TLS)
 
+## Portainer Deployment
+
+When deploying from GitHub in Portainer:
+
+1. **Compose path**: `docker-compose.yml`
+2. **Additional paths**: Click "Add file" and enter `docker-compose.traefik.yml`
+
+![Portainer Configuration](docs/portainer.png)
+
+This configures Portainer to merge both files, equivalent to:
+```bash
+docker compose -f docker-compose.yml -f docker-compose.traefik.yml up -d
+```
+
 ## Prerequisites
 
 ### Standalone
