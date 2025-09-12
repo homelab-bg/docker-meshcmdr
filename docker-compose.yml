@@ -1,7 +1,13 @@
 ---
 services:
   meshcommander:
-    image: vga101/meshcommander:${MC_VER:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MC_VER: ${MC_VER:-latest}
+    image: meshcommander:${MC_VER:-latest}
+    #image: vga101/meshcommander:${MC_VER:-latest}
     container_name: mesh-cmdr
     command:
       - node
