@@ -1,0 +1,23 @@
+---
+services:
+  meshcommander:
+    image: vga101/meshcommander:${MC_VER:-latest}
+    container_name: mesh-cmdr
+    command:
+      - node
+      - meshcommander
+      - '--any'
+    ports:
+      - 3000:${MC_PORT:-3000}
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25' # Limits the service to 25% of one CPU core
+          memory: 50M # Sets a memory limit of 50 megabytes
+        reservations:
+          cpus: '0.1' # Guarantees 10% of one CPU core
+          memory: 8M # Reserves 8 megabytes of memory
+    environment:
+      - NGINX_HOST=${MC_HOST:-localhost}
+      - NGINX_PORT=${MC_PORT:-3000}
