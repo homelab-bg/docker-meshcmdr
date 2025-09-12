@@ -22,10 +22,13 @@ services:
       - traefik
     labels:
       <<: *default-labels
+      # Enable Traefik for this service
       traefik.enable: true
+      # Configure router
       traefik.http.routers.mesh-cmdr.rule: Host(`${MC_HOST}`)
       traefik.http.routers.mesh-cmdr.tls: true
       traefik.http.routers.mesh-cmdr.tls.certresolver: letsencrypt
+      # Configure service
       traefik.http.services.mesh-cmdr.loadbalancer.server.port: ${MC_PORT}
     logging: *default-logging
     
