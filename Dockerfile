@@ -1,7 +1,7 @@
 FROM node:latest
-LABEL maintainer "vga101 <vga101@fsync.org>"
+LABEL org.opencontainers.image.authors="vga101 <vga101@fsync.org>"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 ARG MC_VER=unknown
 
 RUN apt-get -qy update \
